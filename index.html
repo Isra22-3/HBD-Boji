@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boji's Birthday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sparkle-field" id="sparkleField"></div>
+
+
+
+<main>
+<section id="hero">
+  <div class="twenty-hero">
+    <div class="flower-ring">
+      <span style="top:-6%; left:50%;">❀</span>
+      <span style="top:12%; left:88%;">✿</span>
+      <span style="top:50%; left:100%;">❀</span>
+      <span style="top:88%; left:88%;">✾</span>
+      <span style="top:104%; left:50%;">❀</span>
+      <span style="top:88%; left:12%;">✿</span>
+      <span style="top:50%; left:0%;">❀</span>
+      <span style="top:12%; left:12%;">✾</span>
+    </div>
+    <div class="twenty-numeral">20</div>
+  </div>
+  <div class="twenty-tagline">twenty looks good on you <span class="heart">♡</span></div>
+  <div class="twenty-subline">Happy birthday!</div>
+  <button class="level-btn" id="letsGoBtn">This way Lojain→</button>
+</section>
+
+<section id="achievement" style="display:none;">
+  <div class="achieve-mark">Here's to twenty</div>
+  <div class="achieve-title">Two Decades, Beautifully Survived</div>
+  <ul class="ability-list">
+    <li>More dreams to chase</li>
+    <li>More places to see</li>
+    <li>More stories to write</li>
+    <li>More life to live</li>
+  </ul>
+  <div class="fine-print">And I'd love to see them all</div>
+  <a href="gifts.html" class="continue-btn">a little something for you♡</a>
+</section>
+</main>
+
+<footer>made for the best twentieth birthday</footer>
+
+<!-- background music: replace song.mp3 with your own file in this folder -->
+<audio id="bgMusic" loop preload="none">
+  <source src="20.mp3".mp3" type="audio/mpeg">
+</audio>
+<div class="music-toggle" id="musicToggle" title="Play music"></div>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('letsGoBtn').addEventListener('click', ()=>{
+    document.getElementById('achievement').style.display = 'flex';
+    document.getElementById('achievement').scrollIntoView({behavior:'smooth'});
+  });
+</script>
+</body>
+</html>

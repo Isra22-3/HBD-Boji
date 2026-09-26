@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twenty · Gifts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Jost:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sparkle-field" id="sparkleField"></div>
+
+
+
+<main>
+<section id="gifts">
+  <div class="eyebrow"></div>
+  <h2 class="section-heading">Twenty Little Gifts</h2>
+  <div class="section-sub">Tap each one to open it</div>
+  <div class="section-sub" id="giftProgress" style="margin-top:-30px; opacity:0.5;">0 / 20 opened</div>
+  <div class="gift-grid" id="giftGrid"></div>
+  <a href="letter.html" class="continue-btn" id="toLetterBtn" style="display:none;">Go to your letter →</a>
+</section>
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <div class="modal-mark" id="modalMark">Gift</div>
+    <div class="modal-text" id="modalText">Gift text goes here</div>
+    <button class="modal-close" id="modalClose">Close</button>
+  </div>
+</div>
+
+<footer>made for the best twentieth birthday</footer>
+
+
+<script src="script.js"></script>
+<script>
+  const giftContents = [
+  "You have this way of making people feel comfortable without even trying.",
+  "I love every memory with you.",
+  "I hope you always remember how loved and appreciated you are.",
+  "You make ordinary days a little more fun just by being there.",
+  "I genuinely don't know how I got so lucky to have you in my life.",
+  "I hope your twenties are full of adventures you'll still be talking about years from now.",
+  "You deserve every good thing that finds its way to you.",
+  "There are so many little things about you that make you unforgettable.",
+  "I love how we can go from the most serious conversation to laughing over something completely stupid.",
+  "No matter how much time passes, I hope we always have things to laugh about.",
+  "You are someone I'll always be happy I met.",
+  "I hope you never doubt how capable you are of achieving the things you dream about.",
+  "Some people come into your life and quietly become part of your favorite memories. You're one of those people.",
+  "You make being around you feel easy, comfortable, and fun.",
+  "I hope you always stay curious, keep dreaming, and never stop becoming the person you want to be.",
+  "One of my favorite things is knowing that I can always be completely myself around you.",
+  "You've made more days better than you probably realize.",
+  "I hope twenty treats you kindly and gives you plenty of reasons to smile.",
+  "Whatever happens next, I hope you know I'll always be cheering for you.",
+  "Your final gift — A little letter, just for you. 💌"
+];
+
+  const arabicPattern = /[\u0600-\u06FF]/;
+  const giftGrid = document.getElementById('giftGrid');
+  const toLetterBtn = document.getElementById('toLetterBtn');
+  let openedCount = 0;
+  giftContents.forEach((text, i)=>{
+    const box = document.createElement('div');
+    box.className='gift';
+    box.innerHTML = `<span class="gift-num">${i+1}</span>`;
+    box.addEventListener('click', ()=>{
+      if(!box.classList.contains('opened')){
+        box.classList.add('opened');
+        openedCount++;
+        document.getElementById('giftProgress').textContent = `${openedCount} / ${giftContents.length} opened`;
+        if(openedCount === giftContents.length){
+          toLetterBtn.style.display = 'inline-block';
+          toLetterBtn.scrollIntoView({behavior:'smooth', block:'nearest'});
+        }
+      }
+      document.getElementById('modalMark').textContent = i===19 ? 'Final Gift' : `Gift No. ${i+1}`;
+      const modalText = document.getElementById('modalText');
+      modalText.textContent = text;
+      if(arabicPattern.test(text)){
+        modalText.setAttribute('dir','rtl');
+        modalText.classList.add('rtl-text');
+      } else {
+        modalText.removeAttribute('dir');
+        modalText.classList.remove('rtl-text');
+      }
+      document.getElementById('modalOverlay').classList.add('show');
+    });
+    giftGrid.appendChild(box);
+  });
+  document.getElementById('modalClose').addEventListener('click', ()=>{
+    document.getElementById('modalOverlay').classList.remove('show');
+  });
+  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+    if(e.target.id==='modalOverlay') e.target.classList.remove('show');
+  });
+</script>
+</body>
+</html>

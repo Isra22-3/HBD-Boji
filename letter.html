@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Your Letter 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sparkle-field" id="sparkleField"></div>
+
+<main>
+<section id="letter">
+  <div class="eyebrow"></div>
+  <h2 class="section-heading">One Last Thing</h2>
+  <div class="happy-birthday" id="birthdayReveal">
+    <div class="happy-birthday-line">Happy Birthday</div>
+    <div class="happy-birthday-name">Boji</div>
+  </div>
+  <div class="envelope-tap" id="revealHint">Tap to read your letter</div>
+
+  <div class="letter-paper" id="letterPaper">
+    <div class="letter-flourish">❀</div>
+    <p class="salutation">Dear <span class="letter-name">Lojain</span>,</p>
+    <p class="drop-cap">
+Happy 20th birthday, my girl. 🤍<br>
+I hope your twenties bring you everything you've ever wished for,beautiful memories, big dreams, new adventures, and so many reasons to smile.<br>
+I'm so grateful that I got to meet you and that you became such an important part of my life. Some of my favorite memories are the simplest ones, and somehow, they're always better when you're there.<br>
+I hope you always remember how special you are and how much you deserve all the good things coming your way. I can't wait to see everything you'll accomplish and all the memories we'll make along the way.<br>
+Here's to twenty, to growing, laughing, dreaming. <br>
+Happy birthday!<br>
+</p>
+    <p>I love you more than this little letter could ever say. 🤍</p>
+    <div class="letter-divider">⋆ ⋆ ⋆</div>
+    <div class="letter-sign">— Isra</div>
+  </div>
+  <div class="final-badge" id="finalBadge" style="display:none;"><span>❀</span> Happy Twentieth <span>❀</span></div>
+  <a href="index.html" class="continue-btn" id="backHomeBtn" style="display:none;">Back to the beginning</a>
+</section>
+</main>
+
+<footer>made for the best twentieth birthday</footer>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('birthdayReveal').addEventListener('click', function(){
+    this.classList.add('open');
+    document.getElementById('revealHint').style.display = 'none';
+    setTimeout(()=>{
+      document.getElementById('letterPaper').classList.add('show');
+      document.getElementById('finalBadge').style.display='block';
+      document.getElementById('backHomeBtn').style.display='inline-block';
+    }, 300);
+  });
+</script>
+</body>
+</html>

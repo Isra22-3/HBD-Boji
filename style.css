@@ -1,0 +1,205 @@
+:root{
+  --ivory:#fdf3f0;
+  --paper:#fffbf9;
+  --charcoal:#3a2530;
+  --burgundy:#b45d76;
+  --dust:#f0c9d2;
+  --gold:#c9a24a;
+  --gold-soft:#f2ddb0;
+  --rose:#e9a6b4;
+  --rose-deep:#d67e91;
+  --line:rgba(180,93,118,0.18);
+  --shadow:rgba(180,93,118,0.2);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  background:var(--ivory);
+  font-family:'Jost', sans-serif;
+  color:var(--charcoal);
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+}
+.sparkle-field{ position:fixed; inset:0; pointer-events:none; z-index:0; }
+.sparkle{ position:absolute; font-size:10px; opacity:0.35; animation:drift 11s ease-in-out infinite; }
+@keyframes drift{ 0%,100%{ transform:translateY(0); opacity:0.15;} 50%{ transform:translateY(-16px); opacity:0.45;} }
+
+h1,h2{ font-family:'Cormorant Garamond', serif; font-weight:500; }
+.display{ font-family:'Italiana', serif; }
+.rule{ width:40px; height:1px; background:var(--gold); margin:18px auto; }
+::selection{ background:var(--gold-soft); }
+
+/* ---- top nav ---- */
+.site-nav{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:center; gap:34px;
+  padding:20px; background:rgba(253,243,240,0.85); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.site-nav a{
+  font-family:'Jost', sans-serif; font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--charcoal); text-decoration:none; opacity:0.55; transition:opacity .2s ease, color .2s ease;
+}
+.site-nav a.active, .site-nav a:hover{ opacity:1; color:var(--rose-deep); }
+.site-nav .brand{
+  font-family:'Italiana', serif; font-size:15px; letter-spacing:3px; color:var(--gold); margin-right:auto;
+}
+
+main{ position:relative; z-index:1; }
+section{ min-height:calc(100vh - 65px); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:70px 24px; text-align:center;}
+
+.eyebrow{ font-family:'Jost', sans-serif; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); font-weight:500; margin-bottom:20px; }
+
+/* ---- hero / player card ---- */
+#hero{ background: radial-gradient(ellipse at 50% 0%, #f4e2e2 0%, var(--ivory) 60%); }
+.player-card{ background:var(--paper); border:1px solid var(--line); border-radius:22px; padding:46px 38px; max-width:400px; width:100%; box-shadow:0 30px 60px var(--shadow); position:relative; }
+.player-card::before, .player-card::after{ content:""; position:absolute; width:20px; height:20px; border:1px solid var(--gold); }
+.player-card::before{ top:10px; left:10px; border-right:none; border-bottom:none; border-top-left-radius:10px; }
+.player-card::after{ bottom:10px; right:10px; border-left:none; border-top:none; border-bottom-right-radius:10px; }
+.player-name{ font-size:11px; letter-spacing:3px; font-weight:500; color:var(--gold); text-transform:uppercase; }
+.player-title{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:36px; margin:8px 0 26px; font-weight:500; }
+.stat-row{ display:flex; justify-content:space-between; font-size:11px; letter-spacing:1.5px; font-weight:500; opacity:0.6; margin-bottom:8px; text-transform:uppercase;}
+.xp-track{ width:100%; height:2px; background:var(--line); margin-bottom:30px; position:relative; }
+.xp-fill{ height:100%; width:0%; background:var(--gold); transition:width 1.8s cubic-bezier(.2,.9,.3,1); }
+.level-btn, .continue-btn, .primary-link{
+  font-family:'Jost', sans-serif; font-weight:500; font-size:12px; letter-spacing:2.5px; text-transform:uppercase;
+  background:var(--rose-deep); color:#fff; border:none; padding:16px 34px; border-radius:999px; cursor:pointer;
+  box-shadow:0 12px 26px var(--shadow); text-decoration:none; display:inline-block;
+  transition:transform .2s ease, background .25s ease, letter-spacing .25s ease;
+}
+#toLetterBtn{ margin-top:44px; }
+#backHomeBtn{ margin-top:30px; }
+.level-btn:hover, .continue-btn:hover, .primary-link:hover{ background:var(--burgundy); letter-spacing:3px; transform:translateY(-2px) scale(1.02); }
+.scroll-hint{ margin-top:30px; font-size:11px; letter-spacing:2px; opacity:0.4; text-transform:uppercase;}
+
+/* ---- twenty looks good on you hero ---- */
+.twenty-hero{ position:relative; width:260px; height:260px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+.flower-ring{ position:absolute; inset:0; }
+.flower-ring span{
+  position:absolute; transform:translate(-50%,-50%);
+  font-size:26px; color:var(--rose-deep); opacity:0.85;
+  animation:sway 6s ease-in-out infinite;
+}
+.flower-ring span:nth-child(even){ color:var(--gold); animation-delay:1.2s; }
+@keyframes sway{ 0%,100%{ transform:translate(-50%,-50%) rotate(-4deg) scale(1);} 50%{ transform:translate(-50%,-50%) rotate(4deg) scale(1.08);} }
+.twenty-numeral{
+  font-family:'Italiana', serif; font-size:120px; line-height:1; color:var(--charcoal);
+  text-shadow:0 10px 30px var(--shadow);
+}
+.twenty-tagline{
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-size:28px; margin-top:6px;
+  color:var(--charcoal);
+}
+.twenty-tagline .heart{ color:var(--rose-deep); font-style:normal; }
+.twenty-subline{
+  font-family:'Jost', sans-serif; font-size:13px; letter-spacing:0.5px; opacity:0.6; margin:10px 0 30px;
+}
+
+.achieve-mark{ font-family:'Italiana', serif; font-size:15px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:10px;}
+.achieve-title{ font-style:italic; font-size:30px; margin-top:4px; font-family:'Cormorant Garamond', serif; }
+.ability-list{ list-style:none; margin:32px 0; max-width:360px; text-align:left; }
+.ability-list li{ padding:14px 0; font-size:16px; font-family:'Cormorant Garamond', serif; border-bottom:1px solid var(--line); }
+.fine-print{ font-size:11px; opacity:0.5; margin-top:10px; font-style:italic; }
+
+/* ---- gifts ---- */
+.section-heading{ font-style:italic; font-size:36px; margin-bottom:6px; font-family:'Cormorant Garamond', serif; }
+.section-sub{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:500; margin-bottom:40px; }
+.gift-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(72px,1fr)); gap:8px; max-width:500px; width:100%;}
+.gift{ aspect-ratio:1; background:var(--paper); border:1px solid var(--line); border-radius:14px; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; transition:transform .2s ease, background .3s ease, box-shadow .2s ease; }
+.gift.opened{ background:var(--dust); border-color:var(--gold); }
+.gift-num{ font-family:'Cormorant Garamond', serif; font-size:18px; color:var(--gold); font-style:italic; }
+.gift.opened .gift-num{ color:var(--burgundy); }
+.gift:hover{ transform:translateY(-3px); box-shadow:0 10px 20px var(--shadow); }
+
+.modal-overlay{ position:fixed; inset:0; background:rgba(58,37,48,0.55); backdrop-filter:blur(2px); display:none; align-items:center; justify-content:center; z-index:50; padding:20px; }
+.modal-overlay.show{ display:flex; animation:fadeUp .3s ease; }
+.modal-card{ background:var(--paper); border-radius:20px; padding:44px 34px; max-width:340px; width:100%; text-align:center; box-shadow:0 30px 70px rgba(58,37,48,0.3); border-top:3px solid var(--rose-deep); }
+.modal-mark{ font-size:11px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
+.modal-text{ font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.6; font-style:italic; }
+.modal-text.rtl-text{
+  font-family:'Amiri', serif; font-style:normal; direction:rtl; text-align:center;
+  font-size:23px; line-height:2.1;
+}
+.modal-close{ margin-top:26px; background:none; border:none; border-bottom:1px solid var(--rose-deep); color:var(--rose-deep); font-size:11px; letter-spacing:2px; text-transform:uppercase; padding-bottom:2px; cursor:pointer; font-family:'Jost',sans-serif; }
+
+/* ---- letter ---- */
+#letter{ background: radial-gradient(ellipse at 50% 100%, #f4e2e2 0%, var(--ivory) 65%); }
+.happy-birthday{
+  cursor:pointer; padding:20px; transition:transform .3s ease, opacity .4s ease;
+}
+.happy-birthday:hover{ transform:scale(1.02); }
+.happy-birthday.open{ opacity:0.55; pointer-events:none; }
+.happy-birthday-line{
+  font-family:'Jost', sans-serif; font-size:13px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px;
+}
+.happy-birthday-name{
+  font-family:'Italiana', serif; font-size:64px; line-height:1; color:var(--charcoal);
+  text-shadow:0 10px 30px var(--shadow);
+  position:relative; display:inline-block;
+}
+.happy-birthday-name::before, .happy-birthday-name::after{
+  content:"❀"; font-family:'Jost', sans-serif; font-size:16px; color:var(--rose-deep);
+  position:absolute; top:50%; transform:translateY(-50%);
+}
+.happy-birthday-name::before{ left:-38px; }
+.happy-birthday-name::after{ right:-38px; }
+.envelope-tap{ font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:0.4; margin-top:14px;}
+.letter-paper{ display:none; max-width:440px; background:var(--paper); border-radius:6px 6px 20px 20px; padding:48px 38px; margin-top:24px; text-align:left; box-shadow:0 20px 60px var(--shadow); border-top:3px solid var(--rose-deep); position:relative; }
+.letter-paper::before, .letter-paper::after{
+  content:""; position:absolute; width:26px; height:26px; border:1px solid var(--gold-soft); opacity:0.7;
+}
+.letter-paper::before{ top:12px; left:12px; border-right:none; border-bottom:none; }
+.letter-paper::after{ bottom:12px; right:12px; border-left:none; border-top:none; }
+.letter-flourish{ text-align:center; font-size:20px; color:var(--gold); margin-bottom:18px; }
+.letter-paper .salutation{ font-family:'Italiana', serif; font-size:22px; margin-bottom:20px; color:var(--rose-deep); }
+.letter-name{ color:var(--charcoal); }
+.letter-paper .drop-cap:first-letter{
+  font-family:'Italiana', serif; font-size:52px; float:left; line-height:0.8; padding:6px 8px 0 0; color:var(--gold);
+}
+.letter-divider{ text-align:center; color:var(--gold); letter-spacing:8px; font-size:12px; margin:22px 0 6px; opacity:0.8; }
+.letter-paper.show{ display:block; animation:fadeUp .7s ease; }
+.letter-paper p{ font-family:'Cormorant Garamond', serif; font-size:19px; line-height:1.85; margin-bottom:18px; }
+.letter-sign{ font-family:'Italiana', serif; font-size:20px; letter-spacing:1px; color:var(--burgundy); margin-top:14px; }
+.final-badge{ margin-top:30px; font-size:11px; letter-spacing:3px; font-weight:500; color:var(--gold); text-transform:uppercase; }
+.final-badge span{ margin:0 8px; letter-spacing:0; color:var(--rose-deep); }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+footer{ padding:34px; text-align:center; font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:0.35; }
+
+/* ---- music player ---- */
+.music-toggle{
+  position:fixed; bottom:24px; right:24px; z-index:30;
+  width:52px; height:52px; border-radius:50%;
+  background:linear-gradient(135deg, var(--rose), var(--gold-soft));
+  border:1px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 10px 24px var(--shadow);
+  transition:transform .2s ease;
+}
+.music-toggle:hover{ transform:scale(1.06); }
+.music-toggle svg{ width:18px; height:18px; fill:var(--charcoal); }
+.music-toggle.playing{ animation:pulse 2.2s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ box-shadow:0 10px 24px var(--shadow);} 50%{ box-shadow:0 10px 30px var(--rose-deep);} }
+
+/* ---- phone breakpoint ---- */
+@media (max-width: 480px){
+  .site-nav{ gap:18px; padding:16px 10px; flex-wrap:wrap; }
+  .site-nav .brand{ width:100%; text-align:center; margin-right:0; margin-bottom:4px; }
+  section{ padding:50px 18px; }
+  .player-card{ padding:34px 24px; }
+  .player-title{ font-size:28px; }
+  .twenty-hero{ width:190px; height:190px; }
+  .twenty-numeral{ font-size:88px; }
+  .flower-ring span{ font-size:19px; }
+  .twenty-tagline{ font-size:21px; }
+  .happy-birthday-name{ font-size:42px; }
+  .happy-birthday-name::before{ left:-24px; font-size:13px; }
+  .happy-birthday-name::after{ right:-24px; font-size:13px; }
+  .letter-paper{ padding:32px 22px; }
+  .letter-paper .drop-cap:first-letter{ font-size:40px; }
+  .gift-grid{ gap:6px; }
+  .modal-card{ padding:32px 22px; }
+  .music-toggle{ width:46px; height:46px; bottom:16px; right:16px; }
+}
